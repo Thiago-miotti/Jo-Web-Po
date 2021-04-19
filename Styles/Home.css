@@ -1,0 +1,97 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Original+Surfer&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    background-color: #2B2D42;
+    height: 100vh;
+}
+
+.MainContainer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    align-items:center;
+    margin-top: 15px;
+    width: 95vw;
+    box-shadow: 8px 5px 15px rgb(0, 0, 0);
+    height: 30px;
+    padding: 10px 30px;
+    background-color:#E63946 ;
+    border-radius: 20px;
+    position: relative;
+}
+
+.navbar .logo a{
+    font-family: 'Original Surfer', sans-serif;
+    text-decoration: none;
+    color: #EDF2F4;
+    font-size: 20px;
+    background-color: #2B2D42;
+    border-radius: 50px;
+    padding: 10px 10px;
+}
+
+.navbar .logo a:hover{
+    color: #2B2D42;
+    background-color: #EDF2F4;
+}
+
+.Button{
+    display: flex;
+    justify-content: space-evenly;
+    width: 100vw;
+}
+.Button button{ 
+    cursor: pointer;
+    border: 5;
+    border-radius: 40px;
+    color:#EDF2F4 ;
+    background-color: #2B2D42;
+    padding: 15px 32px;
+    font-size: 50px;
+    font-family:'Original Surfer', sans-serif ;
+}
+
+.Button button:hover{
+    color: #2B2D42;
+    background-color: #E63946;
+    border: 0;
+}
+
+.footer { 
+    width: 100vw;
+    height: 15vh;
+    background-color:#E63946 ;
+}
+
+.NomeJogo{
+    font-family: 'Original Surfer', sans-serif;
+    color: #E63946;
+    font-size: 110px;
+    display: flex;
+    justify-content: space-around ;
+    flex-direction: column;
+    
+}
+
+.Container2{
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: -58px;
+}
+
+
+
+
