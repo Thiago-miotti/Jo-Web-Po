@@ -1,0 +1,122 @@
+@import url('https://fonts.googleapis.com/css2?family=Original+Surfer&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    background-color: #2B2D42;
+    height: 100vh;
+    font-family: 'Original Surfer', sans-serif;
+}
+
+.Container1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+    width: 100vw;
+}
+
+.Container2{
+    width: 50vw;
+    height: 600px;
+    box-sizing: border-box;
+    background-color:#E63946;
+    min-width: 850px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+}
+
+.Imagem {
+    flex:1;
+    background-image: url('/Assets/jo-ken-po.jpg');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+.Imagem img{
+    width: 50%;
+    height: auto;
+    background-color: aliceblue;
+}
+
+.LoginBox{
+    flex: 1;
+}
+
+.LoginBox h1{
+    margin: 0;
+    padding: 0 0 20;
+    text-align: center;
+    font-size: 45px;
+    margin-top: 125px;
+}
+
+.LoginBox .login-form{
+    padding: 30px 150px;
+}
+
+.LoginBox .login-form a{
+    text-decoration: none;
+    color: #EDF2F4;
+}
+
+.LoginBox .btt-ir {
+    display: block;
+    background-color:#2B2D42 ;
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    margin-bottom: 20px;
+    margin-top: 10px;
+    border-radius: 30px;
+}
+
+.LoginBox .btt-ir:hover{
+    cursor: pointer;
+    background-color: #EDF2F4;
+    color: black;
+}
+
+.LoginBox  input[type="text"], input[type="password"]{
+    height: 30px;
+    width: 100%;
+    border-radius: 20px;
+    margin-bottom: 20px;
+}
+
+.LoginBox p{
+    font-size: 25px;
+    margin-bottom: 5px;
+}
+
+.LoginBox .Subtexto{
+    text-decoration: none;
+    color: #fff;
+    font-size: 20px;
+    line-height: 40px;
+    padding: 20px 0;
+}
+
+@media only screen and (max-width: 900px){
+
+    .Imagem {
+        display: none;
+    }
+
+    .Container2{
+        width: 90vw;
+        height: 600px;
+        box-sizing: border-box;
+        background-color:#E63946  ;
+    
+        min-width: 400px;
+    }
+
+
+}

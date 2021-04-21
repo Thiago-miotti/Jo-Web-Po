@@ -53,9 +53,11 @@ body{
     justify-content: space-evenly;
     width: 100vw;
 }
-.Button button{ 
+.Button a{ 
     cursor: pointer;
-    border: 5;
+    text-decoration: none;
+    border-style: solid;
+    border: 10;
     border-radius: 40px;
     color:#EDF2F4 ;
     background-color: #2B2D42;
@@ -64,7 +66,7 @@ body{
     font-family:'Original Surfer', sans-serif ;
 }
 
-.Button button:hover{
+.Button a:hover{
     color: #2B2D42;
     background-color: #E63946;
     border: 0;
