@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.0.0/socket.io.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style.css">
+    <title>RPS App</title>
+</head>
+<body onbeforeunload="disconnect()">
+
+    <div class="container">
+        <div class="janela">
+            <div class="header">
+                <h1>Bem vindo ao Jokempo online:</h1>
+            </div>
+            <div class="body">
+                <div class="novaSala">
+                    <h4>Criar um novo jogo</h4>
+                    <form onsubmit="return false">                        
+                        <input nome="p1nome" type="text" placeholder="digite seu nome">
+                        <button class="criarBtn btn btn-primary">Criar</button>
+                    </form>
+                </div>
+                
+                <div class="entrarSala">
+                    <h4>Entrando em um jogo existente</h4>
+                    <form onsubmit="return false">                        
+                        <input nome="p2nome" type="text" placeholder="digite seu nome">
+                        <input nome="salaID" type="text" placeholder="room ID here">
+                        <button class="entrarBtn btn btn-primary">Entrar</button>
+                    </form>
+                </div>
+
+                <div class="placar">
+                    <div class="jogador1">
+                        <h4 class="nome">
+                            Jogador1 :                             
+                        </h4>
+                        <span>0</span>
+                        
+                    </div>
+                    <div class="jogador2">
+                        <h4 class="nome">
+                            Jogador2:                             
+                        </h4>
+                        <span>0</span>
+                    </div>
+                </div>
+                <div class="controls">
+                    <button class="btn btn-primary">
+                        Pedra
+                    </button>
+                    <button class="btn btn-info">
+                        Papel
+                    </button>
+                    <button class="btn btn-danger">
+                        Tesoura
+                    </button>
+                </div>
+                <div id="message">
+                    Esperando a escolha de outro jogador...
+                </div>
+                <br>  
+            </div>
+        </div>
+    </div>
+    
+    <script src="/game.js"></script>    
+</body>
+</html>
