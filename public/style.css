@@ -6,7 +6,7 @@ html,body{
     margin:auto;
 }
 
-.janela{
+.window{
     border: 5px solid #979292;
     border-radius: 10px;
     margin: 5vh 10vw;
@@ -16,18 +16,18 @@ html,body{
     border-bottom: 2px solid black;
 }
 
-.novaSala,.entrarSala{
+.newRoom,.joinRoom{
     margin: 4vh 1vw;
 }
 
-.controles,.placar{
+.controls,.leaderboard{
     margin: 3vh 2vw;
 }
 
-.controlar .botoes{
+.controls button{
     margin: auto 4vw;
 }
 
-.placar,.controles,#message{
+.leaderboard,.controls,#message{
     display: none;
 }

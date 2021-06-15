@@ -4,13 +4,13 @@ const randomstring=require('randomstring');
 
 const express=app();
 
+express.use(app.static('public'));
+
 const PORT = process.env.PORT || 4000;
 
 const server=express.listen(PORT,()=>{
     console.log("Servidor Ok!");
 })
-
-express.use(app.static('public'));
 
 const io=socket(server);
 
