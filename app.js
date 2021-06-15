@@ -1,92 +1,88 @@
-const app = require('express');
-const socket = require('socket.io');
-const randomstring = require('randomstring');
+const app=require('express');
+const socket=require('socket.io');
+const randomstring=require('randomstring');
 
-const express = app();
+const express=app();
 
 const server=express.listen(4000,()=>{
-    console.log("servidor inicializado no http://localhost:4000");
+    console.log("server started at http://localhost:4000");
 })
 
 express.use(app.static('public'));
 
 const io=socket(server);
 
-let jogadores={};
+//ALL player info
+let players={};
+//GAME VARIABLES
+let choice1="",choice2="";
 
-let escolha1="",escolha2="";
-    
-    
-    io.on("conexao", (socket)=>{
-        console.log("conexão estabilizada")
+io.on("connection",(socket)=>{
+    console.log("Conectado");
 
-    socket.on("criarJogo", (data)=>{
-        const salaID=ramdomstring.generate({length:4});
-        socket.join(salaID);
-        jogadores[salaID] = data.name;
-        socket.emit("novoJogo",{salaID:salaID});
+    //Create Game Listener
+    socket.on("createGame",(data)=>{
+        const roomID=randomstring.generate({length: 4});       
+        socket.join(roomID);        
+        players[roomID]=data.name;
+        socket.emit("newGame",{roomID:roomID});
     })
-})
 
+    //Join Game Listener
+    socket.on("joinGame",(data)=>{        
+        socket.join(data.roomID);
+        socket.to(data.roomID).emit("player2Joined",{p2name: data.name,p1name:players[data.roomID]});
+        socket.emit("player1Joined",{p2name:players[data.roomID],p1name:data.name});
+    })
 
-//entrar jogo criado listenner
-
-socket.on("entrarJogo",(data)=>{
-    socket.join(data.salaID);
-    socket.to(data.salaID).emit("Jogador2entrou",{p2nome: data.nome,p1nome:jogadores[data.salaID]});
-    socket.emit("Jogador1entrou",{p2nome:jogadores[data.salaID],p1nome:data.nome});
-})
-
-
-//jogador 1 escolha
-socket.on("escolha1", (data)=> {
-    escolha1 = data.escolha;
-    console.log(escolha1, escolha2);
-    if (escolha2 != "") {
-        result(data.salaID);
-    }
-});
-
-//jogador 2 escolha
-socket.on("escolha2", (data)=> {
-    escolha2 = data.escolha;
-    console.log(escolha1, escolha2);
-    if (escolha1 != "") {
-        result(data.salaID);
-    }
-});
-
-//funcao para ser executada ao fim das 2 escolhas
-const result=(salaID)=> {
-    var ganhador = getWinner(escolha1, escolha2);
-    io.sockets.to(salaID).emit("resultado", {
-        ganhador: ganhador
+    //Listener to Player 1's Choice
+    socket.on("choice1", (data)=> {
+        choice1 = data.choice;
+        console.log(choice1, choice2);
+        if (choice2 != "") {
+            result(data.roomID);
+        }
     });
-    escolha1 = "";
-    escolha2 = "";
-}
+    //Listener to Player 2's Choice
+    socket.on("choice2", (data)=> {
+        choice2 = data.choice;
+        console.log(choice1, choice2);
+        if (choice1 != "") {
+            result(data.roomID);
+        }
+    });
+})
 
-//Funcao para calcular um vencedor
+//Function to calculate winner
 const getWinner=(p, c)=>  {
     if (p === c) {
-        return "empate";
-    } else if (p === "Pedra") {
-        if (c === "Papel") {
+        return "draw";
+    } else if (p === "Rock") {
+        if (c === "Paper") {
             return false;
         } else {
             return true;
         }
-    } else if (p === "Papel") {
-        if (c === "Tesoura") {
+    } else if (p === "Paper") {
+        if (c === "Scissor") {
             return false;
         } else {
             return true;
         }
-    } else if (p === "Tesoura") {
-        if (c === "Pedra") {
+    } else if (p === "Scissor") {
+        if (c === "Rock") {
             return false;
         } else {
             return true;
         }
     }
+}
+//Function to do executed after gettin both choices
+const result=(roomID)=> {
+    var winner = getWinner(choice1, choice2);
+    io.sockets.to(roomID).emit("result", {
+        winner: winner
+    });
+    choice1 = "";
+    choice2 = "";
 }
