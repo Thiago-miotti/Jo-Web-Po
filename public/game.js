@@ -1,4 +1,5 @@
-const socket = io.connect("http://localhost:4000");
+const PORT = process.env.PORT || 4000;
+const socket = io.connect();
 
 let firstPlayer=false;
 let roomID;
