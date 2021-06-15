@@ -5,7 +5,7 @@ const randomstring=require('randomstring');
 const express=app();
 
 const server=express.listen(4000,()=>{
-    console.log("server started at http://localhost:4000");
+    console.log("Servidor Ok!");
 })
 
 express.use(app.static('public'));
