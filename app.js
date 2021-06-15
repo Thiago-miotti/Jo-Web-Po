@@ -4,7 +4,9 @@ const randomstring=require('randomstring');
 
 const express=app();
 
-const server=express.listen(4000,()=>{
+const PORT = process.env.PORT || 4000;
+
+const server=express.listen(PORT,()=>{
     console.log("Servidor Ok!");
 })
 
